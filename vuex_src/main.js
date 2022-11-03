@@ -1,14 +1,13 @@
 import Vue from 'vue'
 import App from './App.vue'
 
-import VueRouter from 'vue-router'
+// 引入vuex
+import Vuex from 'vuex'
 
-import router from './router/index'
+// 引入store
+import store from '@/store/index.js'
 Vue.config.productionTip = false
-
-Vue.use(VueRouter)
-
 new Vue({
   render: (h) => h(App),
-  router
+  store
 }).$mount('#app')
