@@ -9,30 +9,20 @@ import Detail from '@/pages/detail.vue'
 const router = new VueRouter({
   routes: [
     {
-      name: 'about',
       path: '/about',
       component: About
     },
     {
-      nmae: 'home',
       path: '/home',
       component: Home,
       children: [
         {
-          name: 'news',
           path: 'news',
-          component: News,
-          meta: {
-            isAuth: true
-          }
+          component: News
         },
         {
-          name: 'message',
           path: 'message',
           component: Message,
-          meta: {
-            isAuth: true
-          },
           children: [
             {
               name: 'detail',
@@ -52,17 +42,4 @@ const router = new VueRouter({
   ]
 })
 
-// 全局前置路由守卫
-router.beforeEach((to, from, next) => {
-  if (to.meta.isAuth) {
-    if (localStorage.getItem('test') === 'hello') {
-      next()
-    }
-  } else {
-    next()
-  }
-})
-router.afterEach((to, from) => {
-  
-})
 export default router

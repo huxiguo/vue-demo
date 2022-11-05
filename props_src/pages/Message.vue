@@ -2,6 +2,9 @@
   <div>
     <ul>
       <li v-for="item in messageList" :key="item.id">
+        <!-- <router-link :to="`/home/message/detail/${item.id}/${item.title}`"
+          >{{ item.title }}
+        </router-link> -->
         <router-link
           :to="{
             name: 'detail',
@@ -12,8 +15,6 @@
           }"
           >{{ item.title }}
         </router-link>
-        <button @click="pushShow(item)">push查看</button>
-        <button @click="replaceShow(item)">replace查看</button>
       </li>
     </ul>
     <router-view></router-view>
@@ -31,30 +32,6 @@ export default {
         { id: '0003', title: 'cccccccccc' },
         { id: '0004', title: 'dddddddddd' }
       ]
-    }
-  },
-  methods: {
-    pushShow(item) {
-      this.$router.push({
-        name: 'detail',
-        query: {
-          id: item.id,
-          title: item.title
-        }
-      })
-    },
-    replaceShow(item) {
-      this.$router.replace(
-        {
-          name: 'detail',
-          query: {
-            id: item.id,
-            title: item.title
-          }
-        },
-        () => {},
-        () => {}
-      )
     }
   }
 }
